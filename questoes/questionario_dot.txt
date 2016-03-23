@@ -1,0 +1,38 @@
+//QUESTÃO 1
+<?php
+for($i = 1; $i <=100; $i++) {	
+	if($i % 3 == 0 && $i % 5 == 0) {
+		echo 'FizzBuzz';
+	}elseif($i % 3 == 0){
+		echo 'Fizz';
+	}elseif($i % 5 == 0){
+		echo 'Buzz';
+	}else{
+		echo $i;
+	}
+}
+?>
+
+//QUESTÃO 2
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	header("Location: http://www.google.com");
+	exit();
+} elseif (isset($_COOKIE['Loggedin']) && $_COOKIE['Loggedin'] == true) {
+	header("Location: http://www.google.com");
+	exit();
+}
+?>
+
+//QUESTÃO 3
+<?php
+class MyUserClass {
+
+	public function getUserList() {	
+		$dbconn = new DatabaseConnection('localhost','user','password');		
+		$results = $dbconn->query('select name from user');
+		return sort($results);		
+	}
+}
+?>
+

@@ -1,4 +1,4 @@
-//QUESTÃO 1
+﻿//QUESTÃO 1
 <?php
 for($i = 1; $i <=100; $i++) {	
 	if($i % 3 == 0 && $i % 5 == 0) {
@@ -15,6 +15,7 @@ for($i = 1; $i <=100; $i++) {
 
 //QUESTÃO 2
 <?php
+//Acho essa solução ruim
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	header("Location: http://www.google.com");
 	exit();
@@ -22,10 +23,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	header("Location: http://www.google.com");
 	exit();
 }
+//Faria algo assim
+if(Autenticacao::logado()){
+	header("Location: http://www.google.com");
+	exit();
+}
+//E criaria uma classe Autenticacao com método de inicio da sessão e logado sim ou não
 ?>
 
 //QUESTÃO 3
 <?php
+//Maneira obsoleta
 class MyUserClass {
 
 	public function getUserList() {	
@@ -34,5 +42,9 @@ class MyUserClass {
 		return sort($results);		
 	}
 }
+//Criaria uma classe de Bando de Dados com método para executar uma query. Dentro dele já iria ter conexão, 
+//assim eu não precisarei passar a conexão toda vez que for executar alguma query. Algo como:
+$results = ClasseBancoDados::query('select name from user');
+return sort($results);
 ?>
 
